@@ -1,8 +1,6 @@
 package com.springboot.secutiry;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
-
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -63,7 +61,6 @@ public class User {
     }
 
     public void setPassword(String password) {
-
 
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         this.password = passwordEncoder.encode(password);

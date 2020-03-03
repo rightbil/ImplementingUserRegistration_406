@@ -67,11 +67,11 @@ public class HomeController {
     @Autowired
     CourseRepository courseRepository;
 
-    @RequestMapping("/")
+/*    @RequestMapping("/")
     public String listCourses(Model model){
         model.addAttribute("courses", courseRepository.findAll());
         return "listCourse";
-    }
+    }*/
 
     @GetMapping("/add")
     public String courseForm(Model model){

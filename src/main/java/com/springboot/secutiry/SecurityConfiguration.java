@@ -50,8 +50,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .permitAll()
                     .and()
                     .httpBasic();
-            http.csrf().disable();
-            http.headers().frameOptions().disable();
+                    http.csrf().disable();
+                    http.headers().frameOptions().disable();
 
     }
 
