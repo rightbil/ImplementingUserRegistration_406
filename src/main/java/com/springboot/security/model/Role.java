@@ -1,4 +1,4 @@
-package com.springboot.secutiry;
+package com.springboot.security.model;
 
 import javax.persistence.*;
 import java.util.Collection;

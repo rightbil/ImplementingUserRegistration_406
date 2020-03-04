@@ -1,5 +1,11 @@
-package com.springboot.secutiry;
+package com.springboot.security.controller;
 
+import com.springboot.security.model.User;
+import com.springboot.security.repository.UserRepository;
+import com.springboot.security.security.UserService;
+import com.springboot.security.utility.CloudinaryConfig;
+import com.springboot.security.model.SalesCourse;
+import com.springboot.security.repository.SalesCourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,15 +15,22 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.security.Principal;
 
-
 @Controller
 public class HomeController {
 
+    CloudinaryConfig cloudc;
     @Autowired
     private UserService userService;
 
     @Autowired
     UserRepository userRepository;
+
+    @RequestMapping("/")
+    public String index() {
+
+        return "index";
+    }
+
     @RequestMapping("/secure")
     public String secure(Principal principal, Model model) {
 
@@ -29,7 +42,7 @@ public class HomeController {
     @GetMapping("/register")
     public String showRegistrationPage(Model model) {
         model.addAttribute("user", new User());
-        return "registration";
+        return "register";
     }
 
 
@@ -37,7 +50,7 @@ public class HomeController {
     public String processRegistrationPage(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
         model.addAttribute("user", user);
         if (result.hasErrors()) {
-            return "registration";
+            return "register";
         } else {
             userService.saveUser(user);
             model.addAttribute("message", "User Account Created");
@@ -46,11 +59,6 @@ public class HomeController {
         return "index";
     }
 
-    @RequestMapping("/")
-    public String index() {
-
-        return "index";
-    }
 
     @RequestMapping("/login")
     public String login() {
@@ -62,10 +70,10 @@ public class HomeController {
         return "admin";
     }
 
-/*course information*/
+    /*course information*/
 
     @Autowired
-    CourseRepository courseRepository;
+    SalesCourseRepository courseRepository;
 
 /*    @RequestMapping("/")
     public String listCourses(Model model){
@@ -74,14 +82,14 @@ public class HomeController {
     }*/
 
     @GetMapping("/add")
-    public String courseForm(Model model){
-        model.addAttribute("course", new Course());
+    public String courseForm(Model model) {
+        model.addAttribute("course", new SalesCourse());
         return "courseform";
     }
 
     @PostMapping("/process")
-    public String processForm(@Valid Course course, BindingResult result){
-        if (result.hasErrors()){
+    public String processForm(@Valid SalesCourse course, BindingResult result) {
+        if (result.hasErrors()) {
             return "courseform";
         }
         courseRepository.save(course);
@@ -105,8 +113,6 @@ public class HomeController {
         courseRepository.deleteById(id);
         return "redirect:/";
     }
-
-
 
 
 }

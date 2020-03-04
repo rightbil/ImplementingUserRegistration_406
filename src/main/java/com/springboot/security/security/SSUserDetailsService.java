@@ -1,7 +1,10 @@
-package com.springboot.secutiry;
+package com.springboot.security.security;
 
 
 
+import com.springboot.security.model.Role;
+import com.springboot.security.model.User;
+import com.springboot.security.repository.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

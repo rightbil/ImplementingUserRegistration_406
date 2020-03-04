@@ -1,4 +1,4 @@
-package com.springboot.secutiry;
+package com.springboot.security.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-public class Course {
+public class SalesCourse {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,10 +31,10 @@ public class Course {
     @Min(3)
     private int credit;
 
-    public Course() {
+    public SalesCourse() {
     }
 
-    public Course(@NotNull @Size(min = 4) String title, @NotNull @Size(min = 3) String instructor, @NotNull @Size(min = 10) String description, @NotNull @Min(3) int credit) {
+    public SalesCourse(@NotNull @Size(min = 4) String title, @NotNull @Size(min = 3) String instructor, @NotNull @Size(min = 10) String description, @NotNull @Min(3) int credit) {
         this.title = title;
         this.instructor = instructor;
         this.description = description;

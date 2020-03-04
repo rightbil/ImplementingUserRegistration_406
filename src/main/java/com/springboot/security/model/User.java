@@ -1,5 +1,6 @@
-package com.springboot.secutiry;
+package com.springboot.security.model;
 
+import com.springboot.security.model.Role;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import javax.persistence.*;
 import java.util.Collection;

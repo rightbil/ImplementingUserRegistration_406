@@ -1,5 +1,9 @@
-package com.springboot.secutiry;
+package com.springboot.security.utility;
 
+import com.springboot.security.model.Role;
+import com.springboot.security.model.User;
+import com.springboot.security.repository.RoleRepository;
+import com.springboot.security.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
