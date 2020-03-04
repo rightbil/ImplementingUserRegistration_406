@@ -30,7 +30,7 @@ public class SecurityController {
 
     @RequestMapping("/")
     public String index() {
-        return "home";
+        return "index";
     }
 
     @RequestMapping("/listofusers")
@@ -80,7 +80,7 @@ public class SecurityController {
             model.addAttribute("message", "User Account Created");
 
         }
-        return "home";
+        return "index";
     }
 
 
