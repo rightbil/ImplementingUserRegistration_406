@@ -1,4 +1,5 @@
-package com.springboot.security.security;
+package com.springboot.security.secure;
+
 
 import com.springboot.security.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     private SSUserDetailsService userDetailsService;
 
-    @Autowired
-    private UserRepository userRepository;
+   @Autowired
+   private UserRepository userRepository;
 
     @Override
     public UserDetailsService userDetailsServiceBean() throws Exception{
@@ -36,9 +37,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
             http.authorizeRequests()
-                .antMatchers("/","h2-console/**","/register").permitAll()
-                    .antMatchers("/admin")
-                    .access("hasAuthority('ADMIN')")
+                    /*access for everyone */
+                .antMatchers("/","h2-console/**","/register","/css/**").permitAll()
+                    /*access for admin and users in common */
+                     .antMatchers("/listCars")
+                    .access("hasAnyAuthority('ADMIN','USER')")
+                    /*access for users and admins*/
+                    /*exclusive access for ADMIN*/
+                    .antMatchers("/listofadminusers","/admin","/addCar","/addCategory","/add")
+                    .access("hasAnyAuthority('ADMIN')")
+
+
                     .anyRequest().authenticated()
                     .and()
                     .formLogin().loginPage("/login")

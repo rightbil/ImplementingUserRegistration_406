@@ -1,10 +1,23 @@
 package com.springboot.security.controller;
 
+import com.cloudinary.utils.ObjectUtils;
+import com.springboot.security.model.Car;
+import com.springboot.security.model.Category;
+import com.springboot.security.repository.CarRepository;
+import com.springboot.security.repository.CategoryRepository;
+import com.springboot.security.utility.CloudinaryConfig;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.util.Map;
 
-public class HomeController2 {
-   /* @Autowired
+@Controller
+public class CarRegistrationController {
+    @Autowired
     public CategoryRepository categoryRepository;
 
     @Autowired
@@ -12,18 +25,11 @@ public class HomeController2 {
     @Autowired
     CloudinaryConfig cloudc;
 
-    // TODO: Home page Car listings by category
-    @GetMapping("/")
-    public String index(Model model) {
-        model.addAttribute("categories", categoryRepository.findAll());
-        return "carlists";
-    }
-
-    //TODO: 1.1 Add Category
+     //TODO: 1.1 Add Category
     @RequestMapping(value = "/addCategory")
     public String addCategory(Model model) {
         model.addAttribute("category", new Category());
-        return "categoryForm";
+        return "formforcategory";
     }
 
     @RequestMapping(value = "/addCategory", method = RequestMethod.POST)
@@ -37,7 +43,7 @@ public class HomeController2 {
     public String addCar(Model model) {
         model.addAttribute("catgs", categoryRepository.findAll());
         model.addAttribute("car", new Car());
-        return "carForm";
+        return "formforcar";
     }
 
     @RequestMapping(value = "/addCar", method = RequestMethod.POST)
@@ -77,7 +83,7 @@ public class HomeController2 {
     @RequestMapping("/updateCategory/{id}")
     public String upateCategory(@PathVariable("id") long id, Model model) {
         model.addAttribute("category", categoryRepository.findById(id).get());
-        return "categoryForm";
+        return "formforcategory";
     }
 
     //TODO: 3.2 Update Car
@@ -85,39 +91,19 @@ public class HomeController2 {
     public String upateCar(@PathVariable("id") long id, Model model) {
         model.addAttribute("car", carRepository.findById(id).get());
         model.addAttribute("catgs", categoryRepository.findAll());
-        return "carForm";
+        return "formforcar";
     }
 
     @RequestMapping("/listCategory")
     public String listCategory(Model model) {
         model.addAttribute("categoryList", categoryRepository.findAll());
-        return "listCategory";
+        return "listofcategory";
     }
 
     @RequestMapping("/listCars")
     public String listCars(Model model) {
         model.addAttribute("carLists", carRepository.findAll());
-        return "listCars";
+        return "listofcar";
     }
-*/
 
-    //TODO: Version One
-    /*Grading Criteria:
-    Add categories
-    Add cars
-    When adding cars, assign a category to that car
-    Update car information
-    Delete cars
-    View car details
-    List cars that were added
-    List categories
-    */
-    //TODO: Version Two
-    /*
-    If finished, proceed to additional criteria:
-    When the user clicks on a category, they will be given a list of cars under that category
-    Add cars with photos (Cloudinary optional)
-    Update photos of cars
-    Deploy your application to Heroku after you switch the database to PostgreSQL.
-*/
 }

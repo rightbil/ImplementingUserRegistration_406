@@ -1,4 +1,4 @@
-package com.springboot.security.security;
+package com.springboot.security.secure;
 
 
 
@@ -34,14 +34,14 @@ public class SSUserDetailsService implements UserDetailsService {
             if (user == null) {
                 return null;
             }
-            return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), getAuthories(user));
+            return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), getAuthorities(user));
         }
         catch (Exception e){
 
             throw new UsernameNotFoundException("User not found");
         }
     }
-    private Set<GrantedAuthority> getAuthories(User user){
+    private Set<GrantedAuthority> getAuthorities(User user){
         Set<GrantedAuthority> authorities= new HashSet<>();
 
         for(Role role: user.getRoles()) {

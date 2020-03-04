@@ -53,6 +53,8 @@
         <td th:inline="text">[[${a.year}]]</td>
         <td th:inline="text">[[${a.location}]]</td>
         <td th:inline="text">[[${a.vin}]]</td>
+        <td th:inline="text">[[${a.image}]]</td>
+        <img th:src="${a.image}"/>
         <td th:inline="text"><a th:href="@{/deleteCar/{id} (id= ${a.id})}">Delete</a>
             <a th:href="@{/updateCar/{id} (id= ${a.id})}">Update</a></td>
     </tr>

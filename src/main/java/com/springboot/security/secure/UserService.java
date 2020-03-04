@@ -1,4 +1,4 @@
-package com.springboot.security.security;
+package com.springboot.security.secure;
 
 import com.springboot.security.model.User;
 import com.springboot.security.repository.RoleRepository;
@@ -16,7 +16,6 @@ public class UserService {
     @Autowired
     RoleRepository roleRepository;
     @Autowired
-
     private BCryptPasswordEncoder passwordEncoder;
 
     @Autowired

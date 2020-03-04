@@ -39,7 +39,7 @@
 </nav>
 <div>
     <h4>Car Form</h4>
-    <br method="post" th:action="@{/addCar}" th:object="${car}">
+    <form method="post" th:action="@{/addCar}" th:object="${car}"enctype="multipart/form-data">
         <input type="hidden" th:field="*{id}">
         Model : <br/>
         <input type="text" th:field="*{model}" placeholder="Camry" required><br/>

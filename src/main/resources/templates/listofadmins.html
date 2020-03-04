@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:each="user: ${adminroles.users}">
+    Email Address :<span th:text="${user.email}"></span><br/>
+    First Name:<span th:text="${user.firstName}"></span><br/>
+    LastName :<span th:text="${user.lastName}"></span><br/>
+    Enabled :<span th:text="${user.enabled}"></span><br/>
+  <hr/>
+</div>
+</body>
+</html>
+
+I want to display users who are admin
+
+if if the user is ADmin or not
+
+users property of the Role to display users?
+
+
+
