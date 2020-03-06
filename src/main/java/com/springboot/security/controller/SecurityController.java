@@ -6,6 +6,8 @@ import com.springboot.security.repository.UserRepository;
 import com.springboot.security.secure.UserService;
 import com.springboot.security.utility.CloudinaryConfig;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,6 +28,19 @@ public class SecurityController {
     UserRepository userRepository;
     @Autowired
     RoleRepository roleRepository;
+    /*https://blog.netgloo.com/2015/04/06/spring-boot-using-joda-time-on-jpa-entity-with-hibernate/*/
+
+    @RequestMapping(
+            value = "/user",
+            method = RequestMethod.POST,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public ResponseEntity<?> addUser(@RequestBody User user) {
+        // Handle the User object here
+        // ....
+        return null;
+    }
+
 
 
     @RequestMapping("/")

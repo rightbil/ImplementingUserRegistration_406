@@ -13,6 +13,12 @@ public class Car {
     private String vin;
     private String image;
 
+    // Will be mapped as DATETIME (on MySQL)
+    private DateTime createTime;
+
+    // Will be mapped as DATE (on MySQL), i.e. only date without timestamp
+    private LocalDate birthdayDate;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")

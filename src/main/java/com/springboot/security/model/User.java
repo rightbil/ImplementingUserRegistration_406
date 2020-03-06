@@ -1,6 +1,8 @@
 package com.springboot.security.model;
+import org.joda.time.DateTime;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Collection;
 
 @Entity
@@ -27,6 +29,11 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Role> roles;
 
+    // For JSON binding use the format: "1970-01-01T00:00:00.000+0000"
+    private DateTime createTime;
+
+    // For JSON binding use the format: "1970-01-01" (yyyy-MM-dd)
+    private LocalDate birthdayDate;
     public User() {
     }
 
